@@ -26,16 +26,12 @@ minetest.register_chatcommand("kill", {
 
 minetest.register_globalstep(
    function(dtime)
-       for i,pl in ipairs(minetest.get_connected_players()) do
-           local name = pl:get_player_name()           
            for j,kill in ipairs(kill_list) do
-               if kill == name then 
-                  pl:set_hp(0)
+               minetest.env:get_player_by_name(kill):set_hp(0)
                   table.remove(kill_list,j)
                   minetest.log("action", name .. " was instantly killed.")                  
-               end
+              
            end
-       end  
    end
 )
 

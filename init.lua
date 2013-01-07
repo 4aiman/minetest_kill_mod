@@ -40,7 +40,12 @@ minetest.register_chatcommand("hp", {
             minetest.chat_send_player(name, "Usage: /hp <playername> <value>")
             return
         end
-        user, hp = string.match(param, " *([%w%-]+) *(%w*)")
+        user, hp = string.match(param, " *([%w%-]+) *(%d*)")
+        if type(hp) ~= "number" then
+            minetest.chat_send_player(name, "Can't set anyone's HP to \"THAT\"!\n" .. 
+                                            "You should supply valid positive integer value.")
+           return
+        end
         if minetest.env:get_player_by_name(user) then
             table.insert(hp_list, {user, hp})
             minetest.chat_send_player(name, user .. "'s HP set to " .. hp .. ".")

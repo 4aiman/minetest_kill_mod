@@ -41,6 +41,7 @@ minetest.register_chatcommand("hp", {
             return
         end
         user, hp = string.match(param, " *([%w%-]+) *(%d*)")
+        hp = tonumber(hp) 
         if type(hp) ~= "number" then
             minetest.chat_send_player(name, "Can't set anyone's HP to \"THAT\"!\n" .. 
                                             "You should supply valid positive integer value.")

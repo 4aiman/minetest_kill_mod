@@ -67,7 +67,7 @@ minetest.register_globalstep(
 
            for j,hps in ipairs(hp_list) do
                minetest.env:get_player_by_name(hps[1]):set_hp(hps[2])
-               minetest.log("action", name .. "'s HP have been changed to " .. hps[1] .. ".")                               
+               minetest.log("action", hps[1] .. "'s HP have been changed to " .. hps[2] .. ".")                               
                table.remove(hp_list,j)
            end
    end
